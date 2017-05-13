@@ -1,14 +1,16 @@
 ;(function(window,document){
-  function TipAlert(){
+  function ToolTip(){
+    if(ToolTip.instance)return ToolTip.instance;
     this.fixedDom = this.boxDom = this.content = this.callback = null;
     this.prompt = {
       content:"",
       ok:"确定",
       close:"取消"
     };
+    ToolTip.instance = this;
   }
-  TipAlert.prototype = {
-    constructor:TipAlert,
+  ToolTip.prototype = {
+    constructor:ToolTip,
     __init:function(){
       this.__initDom();
     },
@@ -121,5 +123,5 @@
       this.boxDom.append(div);
     }
   };
-  window.TipAlert = new TipAlert();
+  window.ToolTip = ToolTip;
 })(window,document);
